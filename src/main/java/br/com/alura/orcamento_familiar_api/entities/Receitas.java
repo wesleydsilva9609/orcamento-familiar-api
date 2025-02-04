@@ -1,10 +1,8 @@
-package br.com.alura.orcamento_familiar_api;
+package br.com.alura.orcamento_familiar_api.entities;
 
+import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

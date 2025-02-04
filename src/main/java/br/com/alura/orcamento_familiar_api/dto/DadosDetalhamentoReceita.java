@@ -1,4 +1,6 @@
-package br.com.alura.orcamento_familiar_api;
+package br.com.alura.orcamento_familiar_api.dto;
+
+import br.com.alura.orcamento_familiar_api.entities.Receitas;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

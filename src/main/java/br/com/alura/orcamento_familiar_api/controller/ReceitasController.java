@@ -1,8 +1,11 @@
-package br.com.alura.orcamento_familiar_api;
+package br.com.alura.orcamento_familiar_api.controller;
 
+import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
+import br.com.alura.orcamento_familiar_api.dto.DadosListagemReceita;
+import br.com.alura.orcamento_familiar_api.service.ReceitasService;
 import jakarta.validation.Valid;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,12 @@ public class ReceitasController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemReceita>> listagem(@PageableDefault(size = 8, sort = "id")Pageable pageable){
-        return
+        return service.listarReceita(pageable);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity buscarReceitaPorId(@PathVariable Long id){
+        return service.buscarporid(id);
     }
 
 }
