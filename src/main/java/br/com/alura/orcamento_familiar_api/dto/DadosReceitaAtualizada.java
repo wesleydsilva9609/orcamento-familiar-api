@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-public record DadosReceitaAtualizada(Long id, String descricao, BigDecimal valor, LocalDateTime data) {
+public record DadosReceitaAtualizada(Long id, String descricao, BigDecimal valor, Date data) {
 
     @JsonCreator
     public DadosReceitaAtualizada {
