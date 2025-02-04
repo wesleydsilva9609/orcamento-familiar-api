@@ -1,6 +1,7 @@
 package br.com.alura.orcamento_familiar_api.entities;
 
 import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
+import br.com.alura.orcamento_familiar_api.dto.DadosReceitaAtualizada;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 
@@ -44,5 +45,15 @@ public class Receitas {
 
     public LocalDateTime getData_receita() {
         return data_receita;
+    }
+
+    public void atualizar(DadosReceitaAtualizada dadosReceitaAtualizada) {
+        if(dadosReceitaAtualizada.descricao() != null){
+            this.descricao = dadosReceitaAtualizada.descricao();
+        }  if (dadosReceitaAtualizada.valor() != null) {
+            this.valor = dadosReceitaAtualizada.valor();
+        }if(dadosReceitaAtualizada.data() != null){
+            this.data_receita = dadosReceitaAtualizada.data();
+        }
     }
 }

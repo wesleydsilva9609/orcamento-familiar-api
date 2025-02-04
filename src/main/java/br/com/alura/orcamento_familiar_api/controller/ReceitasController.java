@@ -2,6 +2,7 @@ package br.com.alura.orcamento_familiar_api.controller;
 
 import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
 import br.com.alura.orcamento_familiar_api.dto.DadosListagemReceita;
+import br.com.alura.orcamento_familiar_api.dto.DadosReceitaAtualizada;
 import br.com.alura.orcamento_familiar_api.service.ReceitasService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,18 @@ public class ReceitasController {
     @GetMapping("/{id}")
     public ResponseEntity buscarReceitaPorId(@PathVariable Long id){
         return service.buscarporid(id);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity atualizarReceitaPorId(@PathVariable Long id,@RequestBody @Valid DadosReceitaAtualizada dadosReceitaAtualizada){
+        return service.atualizar(id,dadosReceitaAtualizada);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deletarReceita(@PathVariable Long id){
+        return service.deletar(id);
     }
 
 }
