@@ -1,8 +1,8 @@
 package br.com.alura.orcamento_familiar_api.entities;
 
-import br.com.alura.orcamento_familiar_api.dto.DadosCadastroDespesa;
+import br.com.alura.orcamento_familiar_api.dto.despesas.DadosCadastroDespesa;
+import br.com.alura.orcamento_familiar_api.dto.despesas.DadosDespesasAtualizadas;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -34,6 +34,17 @@ public class Despesas {
         this.despesas_data = dadosCadastroDespesa.data();
     }
 
+    public void atualizar(DadosDespesasAtualizadas dadosDespesasAtualizadas){
+        if(dadosDespesasAtualizadas.descricao() != null){
+            this.despesas_descricao = dadosDespesasAtualizadas.descricao();
+        }if(dadosDespesasAtualizadas.valor() != null){
+            this.despesas_valor = dadosDespesasAtualizadas.valor();
+        }if(dadosDespesasAtualizadas.data() != null){
+            this.despesas_data = dadosDespesasAtualizadas.data();
+        }
+
+    }
+
     public Long getDespesas_id() {
         return despesas_id;
     }
@@ -49,4 +60,6 @@ public class Despesas {
     public Date getDespesas_data() {
         return despesas_data;
     }
+
+
 }

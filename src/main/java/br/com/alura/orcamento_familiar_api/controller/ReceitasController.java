@@ -1,8 +1,8 @@
 package br.com.alura.orcamento_familiar_api.controller;
 
-import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
-import br.com.alura.orcamento_familiar_api.dto.DadosListagemReceita;
-import br.com.alura.orcamento_familiar_api.dto.DadosReceitaAtualizada;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosCadastroReceita;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosListagemReceita;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosReceitaAtualizada;
 import br.com.alura.orcamento_familiar_api.service.ReceitasService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

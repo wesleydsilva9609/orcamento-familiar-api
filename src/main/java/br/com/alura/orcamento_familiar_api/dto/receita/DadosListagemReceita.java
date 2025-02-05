@@ -1,4 +1,4 @@
-package br.com.alura.orcamento_familiar_api.dto;
+package br.com.alura.orcamento_familiar_api.dto.receita;
 
 import br.com.alura.orcamento_familiar_api.entities.Receitas;
 

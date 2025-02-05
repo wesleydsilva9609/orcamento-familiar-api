@@ -1,15 +1,13 @@
 package br.com.alura.orcamento_familiar_api.service;
 
-import br.com.alura.orcamento_familiar_api.dto.*;
+import br.com.alura.orcamento_familiar_api.dto.receita.*;
 import br.com.alura.orcamento_familiar_api.entities.Receitas;
 import br.com.alura.orcamento_familiar_api.repository.ReceitasRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service

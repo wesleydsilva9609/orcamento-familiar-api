@@ -1,4 +1,4 @@
-package br.com.alura.orcamento_familiar_api.dto;
+package br.com.alura.orcamento_familiar_api.dto.receita;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,12 +1,11 @@
 package br.com.alura.orcamento_familiar_api.entities;
 
-import br.com.alura.orcamento_familiar_api.dto.DadosCadastroReceita;
-import br.com.alura.orcamento_familiar_api.dto.DadosReceitaAtualizada;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosCadastroReceita;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosReceitaAtualizada;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity(name = "Receitas")
