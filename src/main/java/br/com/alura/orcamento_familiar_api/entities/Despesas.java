@@ -1,5 +1,6 @@
 package br.com.alura.orcamento_familiar_api.entities;
 
+import br.com.alura.orcamento_familiar_api.dto.DadosCadastroDespesa;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 
@@ -24,6 +25,13 @@ public class Despesas {
         this.despesas_descricao = despesas_descricao;
         this.despesas_valor = despesas_valor;
         this.despesas_data = despesas_data;
+    }
+
+    public Despesas(DadosCadastroDespesa dadosCadastroDespesa) {
+        this.despesas_id = dadosCadastroDespesa.id();
+        this.despesas_descricao = dadosCadastroDespesa.descricao();
+        this.despesas_valor = dadosCadastroDespesa.valor();
+        this.despesas_data = dadosCadastroDespesa.data();
     }
 
     public Long getDespesas_id() {
