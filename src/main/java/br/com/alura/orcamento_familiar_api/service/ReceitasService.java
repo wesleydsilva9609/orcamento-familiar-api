@@ -16,6 +16,12 @@ public class ReceitasService {
     private ReceitasRepository repository;
 
     public ResponseEntity cadastrarReceita(DadosCadastroReceita dadosCadastroReceitareceita, UriComponentsBuilder uriComponentsBuilder) {
+        boolean existeduplicada = repository.existsByDescricaoAndMes(dadosCadastroReceitareceita.descricao(),dadosCadastroReceitareceita.data());
+
+        if(existeduplicada){
+            return ResponseEntity.badRequest().body("Ja existe uma receita com essa descrição nesse mes");
+        }
+
         var receita = new Receitas(dadosCadastroReceitareceita);
         var uri = uriComponentsBuilder.path("/receitas/{id}").buildAndExpand(dadosCadastroReceitareceita.id()).toUri();
         repository.save(receita);

@@ -18,6 +18,13 @@ public class DespesasService {
     private DespesasRepository repository;
 
     public ResponseEntity cadastrarDespesa(DadosCadastroDespesa dadosCadastroDespesa, UriComponentsBuilder uriComponentsBuilder) {
+        // Verifica se já existe uma despesa com a mesma descrição no mesmo mês
+        boolean existeDuplicada = repository.existsByDescricaoAndMes(dadosCadastroDespesa.descricao(),dadosCadastroDespesa.data());
+
+        if(existeDuplicada){
+            return ResponseEntity.badRequest().body("Ja existe uma despesa com essa descrição nesse mes");
+        }
+
         var despesas= new Despesas(dadosCadastroDespesa);
         var uri = uriComponentsBuilder.path("/despesas{id}").buildAndExpand(dadosCadastroDespesa.id()).toUri();
         repository.save(despesas);
