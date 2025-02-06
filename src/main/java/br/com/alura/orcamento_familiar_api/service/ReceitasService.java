@@ -72,4 +72,17 @@ public class ReceitasService {
     public List<DadosListagemReceita> conversor(List<Receitas> receitasList){
       return  receitasList.stream().map(DadosListagemReceita::new).collect(Collectors.toList());
     }
+
+    public ResponseEntity<List<DadosListagemReceita>> ListarPorData(String ano, String mes) {
+        if (!ano.matches("\\d{4}") || !mes.matches("\\d{2}")){
+            return  ResponseEntity.badRequest().build();
+        }
+
+        var receita = repository.findAllBuscarDataReceita(ano,mes);
+
+        if(receita.isEmpty()){
+         return  ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(conversor(receita));
+    }
 }

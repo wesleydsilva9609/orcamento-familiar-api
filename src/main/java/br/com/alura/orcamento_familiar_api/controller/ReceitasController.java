@@ -55,4 +55,9 @@ public class ReceitasController {
         return service.listarReceitaPorNome(descricao);
     }
 
+    @GetMapping("/{ano}/{mes}")
+    ResponseEntity<List<DadosListagemReceita>> listarPorData(@PathVariable String ano, @PathVariable String mes){
+        return service.ListarPorData(ano,mes);
+    }
+
 }

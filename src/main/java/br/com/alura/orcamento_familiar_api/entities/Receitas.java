@@ -17,7 +17,8 @@ public class Receitas {
     private Long id;
     private String descricao;
     private BigDecimal valor;
-    private Date data_receita;
+    @Temporal(TemporalType.DATE)
+    private Date dataReceita;
 
     public Receitas(){
 
@@ -28,7 +29,7 @@ public class Receitas {
         this.id = dadosCadastroReceitareceita.id();
         this.descricao = dadosCadastroReceitareceita.descricao();
         this.valor = dadosCadastroReceitareceita.valor();
-        this.data_receita = dadosCadastroReceitareceita.data();
+        this.dataReceita = dadosCadastroReceitareceita.data();
     }
 
     public Long getId() {
@@ -43,8 +44,8 @@ public class Receitas {
         return valor;
     }
 
-    public Date getData_receita() {
-        return data_receita;
+    public Date getDataReceita() {
+        return dataReceita;
     }
 
     public void atualizar(DadosReceitaAtualizada dadosReceitaAtualizada) {
@@ -53,7 +54,7 @@ public class Receitas {
         }  if (dadosReceitaAtualizada.valor() != null) {
             this.valor = dadosReceitaAtualizada.valor();
         }if(dadosReceitaAtualizada.data() != null){
-            this.data_receita = dadosReceitaAtualizada.data();
+            this.dataReceita = dadosReceitaAtualizada.data();
         }
     }
 }
