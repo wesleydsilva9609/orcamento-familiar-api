@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ReceitasService {
     @Autowired
@@ -49,5 +52,24 @@ public class ReceitasService {
     public ResponseEntity deletar(Long id) {
          repository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity <List<DadosListagemReceita>> listarReceitaPorNome(String descricao) {
+        // Verifica se a descrição é nula ou vazia antes de buscar no banco
+        if(descricao == null || descricao.trim().isEmpty()){
+            return ResponseEntity.badRequest().build();
+        }
+
+        var receita = repository.findByDescricaoContainingIgnoreCase(descricao);
+        // Se não encontrar receitas, retorna 404 Not Found
+        if(receita.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(conversor(receita));
+    }
+
+    public List<DadosListagemReceita> conversor(List<Receitas> receitasList){
+      return  receitasList.stream().map(DadosListagemReceita::new).collect(Collectors.toList());
     }
 }

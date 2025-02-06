@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
+import java.util.List;
 
 public interface ReceitasRepository extends JpaRepository<Receitas,Long> {
 
@@ -15,4 +16,8 @@ public interface ReceitasRepository extends JpaRepository<Receitas,Long> {
             AND FUNCTION('MONTH', r.data_receita) =FUNCTION('MONTH', :data) 
             """)
     boolean existsByDescricaoAndMes(String descricao, Date data);
+
+
+
+    List<Receitas> findByDescricaoContainingIgnoreCase(String descricao);
 }

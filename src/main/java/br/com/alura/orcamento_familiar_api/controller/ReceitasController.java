@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/receitas")
 public class ReceitasController {
@@ -46,6 +48,11 @@ public class ReceitasController {
     @Transactional
     public ResponseEntity deletarReceita(@PathVariable Long id){
         return service.deletar(id);
+    }
+
+    @GetMapping(params = "descricao")
+    public ResponseEntity<List<DadosListagemReceita>> listarPorNome(@RequestParam(name = "descricao", required = false, defaultValue = "") String descricao){
+        return service.listarReceitaPorNome(descricao);
     }
 
 }
