@@ -3,6 +3,7 @@ import br.com.alura.orcamento_familiar_api.dto.despesas.DadosCadastroDespesa;
 import br.com.alura.orcamento_familiar_api.dto.despesas.DadosDespesasAtualizadas;
 import br.com.alura.orcamento_familiar_api.dto.despesas.DadosDetalhamentoDespesas;
 import br.com.alura.orcamento_familiar_api.dto.despesas.DadosListagemDespesas;
+import br.com.alura.orcamento_familiar_api.dto.receita.DadosListagemReceita;
 import br.com.alura.orcamento_familiar_api.entities.Despesas;
 import br.com.alura.orcamento_familiar_api.repository.DespesasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +72,21 @@ public class DespesasService {
 
     public List<DadosListagemDespesas> conversor(List<Despesas> despesasList){
         return despesasList.stream().map(DadosListagemDespesas::new).collect(Collectors.toList());
+    }
+
+    public ResponseEntity<List<DadosListagemDespesas>> ListarPorData(String ano, String mes) {
+        // Verifica se os parâmetros ano e mes possuem o formato correto (ano = 4 dígitos, mes = 2 dígitos)
+        if(!ano.matches("\\d{4}") || !mes.matches("\\d{2}")){
+            return ResponseEntity.badRequest().build();
+        }
+
+        var despesas = repository.buscarPordata(ano,mes);
+
+        if(despesas.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+
+        return ResponseEntity.ok(conversor(despesas));
     }
 }

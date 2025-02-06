@@ -9,6 +9,6 @@ import java.util.Date;
 public record DadosListagemDespesas(Categoria categoria, String descricao, BigDecimal valor, Date date) {
 
     public DadosListagemDespesas(Despesas despesas){
-        this(despesas.getCategoria(),despesas.getDespesasDescricao(), despesas.getDespesas_valor(),despesas.getDespesas_data());
+        this(despesas.getCategoria(),despesas.getDespesasDescricao(), despesas.getDespesas_valor(),despesas.getDespesasData());
     }
 }

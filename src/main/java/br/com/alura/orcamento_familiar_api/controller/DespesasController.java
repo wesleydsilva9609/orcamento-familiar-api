@@ -56,5 +56,10 @@ public class DespesasController {
         return service.listarDespesasPorDescricao(descricao);
     }
 
+    @GetMapping("/{ano}/{mes}")
+    ResponseEntity<List<DadosListagemDespesas>> listarPorData(@PathVariable String ano, @PathVariable String mes){
+        return service.ListarPorData(ano,mes);
+    }
+
 
 }
