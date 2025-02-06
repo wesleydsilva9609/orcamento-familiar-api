@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class DespesasService {
     @Autowired
@@ -50,5 +53,23 @@ public class DespesasService {
     public ResponseEntity deletarPorId(Long id) {
        repository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<List<DadosListagemDespesas>> listarDespesasPorDescricao(String descricao) {
+        if(descricao == null || descricao.trim().isEmpty()){
+            return ResponseEntity.badRequest().build();
+        }
+
+        var despesas = repository.findByDespesasDescricaoContainingIgnoreCase(descricao);
+
+        if (despesas.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(conversor(despesas));
+    }
+
+    public List<DadosListagemDespesas> conversor(List<Despesas> despesasList){
+        return despesasList.stream().map(DadosListagemDespesas::new).collect(Collectors.toList());
     }
 }

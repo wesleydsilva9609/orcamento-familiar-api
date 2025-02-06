@@ -13,7 +13,7 @@ public class Despesas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long despesas_id;
-    private String despesas_descricao;
+    private String despesasDescricao;
     private BigDecimal despesas_valor;
     private Date despesas_data;
     @Enumerated(EnumType.STRING)
@@ -24,10 +24,10 @@ public class Despesas {
     public Despesas() {
     }
 
-    public Despesas(Long despesas_id, String despesas_descricao, BigDecimal despesas_valor, Date despesas_data,Categoria categoria) {
+    public Despesas(Long despesas_id, String despesasDescricao, BigDecimal despesas_valor, Date despesas_data, Categoria categoria) {
         this.despesas_id = despesas_id;
         this.categoria = categoria;
-        this.despesas_descricao = despesas_descricao;
+        this.despesasDescricao = despesasDescricao;
         this.despesas_valor = despesas_valor;
         this.despesas_data = despesas_data;
     }
@@ -35,14 +35,14 @@ public class Despesas {
     public Despesas(DadosCadastroDespesa dadosCadastroDespesa) {
         this.despesas_id = dadosCadastroDespesa.id();
         this.categoria = dadosCadastroDespesa.categoria();
-        this.despesas_descricao = dadosCadastroDespesa.descricao();
+        this.despesasDescricao = dadosCadastroDespesa.descricao();
         this.despesas_valor = dadosCadastroDespesa.valor();
         this.despesas_data = dadosCadastroDespesa.data();
     }
 
     public void atualizar(DadosDespesasAtualizadas dadosDespesasAtualizadas){
         if(dadosDespesasAtualizadas.descricao() != null){
-            this.despesas_descricao = dadosDespesasAtualizadas.descricao();
+            this.despesasDescricao = dadosDespesasAtualizadas.descricao();
         }if(dadosDespesasAtualizadas.valor() != null){
             this.despesas_valor = dadosDespesasAtualizadas.valor();
         }if(dadosDespesasAtualizadas.data() != null){
@@ -55,8 +55,8 @@ public class Despesas {
         return despesas_id;
     }
 
-    public String getDespesas_descricao() {
-        return despesas_descricao;
+    public String getDespesasDescricao() {
+        return despesasDescricao;
     }
 
     public BigDecimal getDespesas_valor() {
