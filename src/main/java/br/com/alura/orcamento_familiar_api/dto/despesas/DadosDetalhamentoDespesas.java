@@ -1,13 +1,14 @@
 package br.com.alura.orcamento_familiar_api.dto.despesas;
 
+import br.com.alura.orcamento_familiar_api.entities.Categoria;
 import br.com.alura.orcamento_familiar_api.entities.Despesas;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public record DadosDetalhamentoDespesas(Long id, String descricao, BigDecimal valor, Date data) {
+public record DadosDetalhamentoDespesas(Long id, Categoria categoria, String descricao, BigDecimal valor, Date data) {
 
     public DadosDetalhamentoDespesas(Despesas despesas){
-        this(despesas.getDespesas_id(), despesas.getDespesas_descricao(), despesas.getDespesas_valor(),despesas.getDespesas_data());
+        this(despesas.getDespesas_id(),despesas.getCategoria(), despesas.getDespesas_descricao(), despesas.getDespesas_valor(),despesas.getDespesas_data());
     }
 }

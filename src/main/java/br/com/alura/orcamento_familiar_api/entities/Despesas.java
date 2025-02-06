@@ -16,12 +16,17 @@ public class Despesas {
     private String despesas_descricao;
     private BigDecimal despesas_valor;
     private Date despesas_data;
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+
+
 
     public Despesas() {
     }
 
-    public Despesas(Long despesas_id, String despesas_descricao, BigDecimal despesas_valor, Date despesas_data) {
+    public Despesas(Long despesas_id, String despesas_descricao, BigDecimal despesas_valor, Date despesas_data,Categoria categoria) {
         this.despesas_id = despesas_id;
+        this.categoria = categoria;
         this.despesas_descricao = despesas_descricao;
         this.despesas_valor = despesas_valor;
         this.despesas_data = despesas_data;
@@ -29,6 +34,7 @@ public class Despesas {
 
     public Despesas(DadosCadastroDespesa dadosCadastroDespesa) {
         this.despesas_id = dadosCadastroDespesa.id();
+        this.categoria = dadosCadastroDespesa.categoria();
         this.despesas_descricao = dadosCadastroDespesa.descricao();
         this.despesas_valor = dadosCadastroDespesa.valor();
         this.despesas_data = dadosCadastroDespesa.data();
@@ -59,6 +65,10 @@ public class Despesas {
 
     public Date getDespesas_data() {
         return despesas_data;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 
 
