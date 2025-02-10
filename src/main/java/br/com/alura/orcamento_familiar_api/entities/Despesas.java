@@ -14,7 +14,7 @@ public class Despesas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long despesas_id;
     private String despesasDescricao;
-    private BigDecimal despesas_valor;
+    private BigDecimal despesasValor;
     private Date despesasData;
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
@@ -24,11 +24,11 @@ public class Despesas {
     public Despesas() {
     }
 
-    public Despesas(Long despesas_id, String despesasDescricao, BigDecimal despesas_valor, Date despesasData, Categoria categoria) {
+    public Despesas(Long despesas_id, String despesasDescricao, BigDecimal despesasValor, Date despesasData, Categoria categoria) {
         this.despesas_id = despesas_id;
         this.categoria = categoria;
         this.despesasDescricao = despesasDescricao;
-        this.despesas_valor = despesas_valor;
+        this.despesasValor = despesasValor;
         this.despesasData = despesasData;
     }
 
@@ -36,7 +36,7 @@ public class Despesas {
         this.despesas_id = dadosCadastroDespesa.id();
         this.categoria = dadosCadastroDespesa.categoria();
         this.despesasDescricao = dadosCadastroDespesa.descricao();
-        this.despesas_valor = dadosCadastroDespesa.valor();
+        this.despesasValor = dadosCadastroDespesa.valor();
         this.despesasData = dadosCadastroDespesa.data();
     }
 
@@ -44,7 +44,7 @@ public class Despesas {
         if(dadosDespesasAtualizadas.descricao() != null){
             this.despesasDescricao = dadosDespesasAtualizadas.descricao();
         }if(dadosDespesasAtualizadas.valor() != null){
-            this.despesas_valor = dadosDespesasAtualizadas.valor();
+            this.despesasValor = dadosDespesasAtualizadas.valor();
         }if(dadosDespesasAtualizadas.data() != null){
             this.despesasData = dadosDespesasAtualizadas.data();
         }
@@ -59,8 +59,8 @@ public class Despesas {
         return despesasDescricao;
     }
 
-    public BigDecimal getDespesas_valor() {
-        return despesas_valor;
+    public BigDecimal getDespesasValor() {
+        return despesasValor;
     }
 
     public Date getDespesasData() {

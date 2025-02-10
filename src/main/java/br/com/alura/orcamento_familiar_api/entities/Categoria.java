@@ -9,4 +9,8 @@ public enum Categoria {
     LAZER,
     IMPREVISTOS,
     OUTROS;
+
+
+
+
 }
