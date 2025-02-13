@@ -2,14 +2,16 @@ package br.com.alura.orcamento_familiar_api.service;
 
 import br.com.alura.orcamento_familiar_api.entities.Usuario;
 import com.auth0.jwt.JWT;
+
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Date;
+
 
 @Service
 public class TokenService {
@@ -18,12 +20,27 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256("123456");
             return JWT.create()
-                    .withIssuer("auth0")
+                    .withIssuer("orcamento api")
                     .withSubject(usuario.getUsuario())
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
             throw new RuntimeException("impossivel gerar token");
+        }
+    }
+
+    public String getSubject(String tokenJWT){
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("123456");
+            return JWT.require(algorithm)
+                    // specify any specific claim validations
+                    .withIssuer("orcamento api")
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+
+        } catch (JWTVerificationException exception){
+            throw new RuntimeException("token invalido");
         }
     }
 
