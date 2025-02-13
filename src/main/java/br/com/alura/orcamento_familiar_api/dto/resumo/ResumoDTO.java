@@ -1,7 +1,6 @@
-package br.com.alura.orcamento_familiar_api.dto;
+package br.com.alura.orcamento_familiar_api.dto.resumo;
 
-import br.com.alura.orcamento_familiar_api.entities.Despesas;
-import com.fasterxml.jackson.annotation.JsonAlias;
+import br.com.alura.orcamento_familiar_api.dto.resumo.CategoriaResumo;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,7 +1,7 @@
 package br.com.alura.orcamento_familiar_api.service;
 
-import br.com.alura.orcamento_familiar_api.dto.CategoriaResumo;
-import br.com.alura.orcamento_familiar_api.dto.ResumoDTO;
+import br.com.alura.orcamento_familiar_api.dto.resumo.CategoriaResumo;
+import br.com.alura.orcamento_familiar_api.dto.resumo.ResumoDTO;
 import br.com.alura.orcamento_familiar_api.entities.Categoria;
 import br.com.alura.orcamento_familiar_api.repository.DespesasRepository;
 import br.com.alura.orcamento_familiar_api.repository.ReceitasRepository;
@@ -33,8 +33,11 @@ public class ResumoService {
         List<CategoriaResumo> resumoList = new ArrayList<>();
 
         for (Object[] linha : despesasCategoria) {
+            // Verifica se os elementos da linha não são nulos antes de processar
             if(linha[0] != null && linha[1] != null) {
+                // O primeiro elemento é a categoria (String)
                 Categoria categoria = Categoria.valueOf(linha[0].toString());
+                // O segundo elemento é o total das despesas (BigDecimal)
                 BigDecimal total = (BigDecimal) linha[1];
                 resumoList.add(new CategoriaResumo(categoria, total));
             }

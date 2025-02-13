@@ -1,4 +1,4 @@
-package br.com.alura.orcamento_familiar_api.dto;
+package br.com.alura.orcamento_familiar_api.dto.resumo;
 
 import br.com.alura.orcamento_familiar_api.entities.Categoria;
 
