@@ -1,7 +1,6 @@
 package br.com.alura.orcamento_familiar_api.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
-@Getter
+
 public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +26,18 @@ public class Usuario implements UserDetails {
         this.id = id;
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
     @Override

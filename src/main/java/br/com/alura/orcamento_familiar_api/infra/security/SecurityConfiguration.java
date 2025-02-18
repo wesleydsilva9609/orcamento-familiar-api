@@ -1,5 +1,6 @@
-package br.com.alura.orcamento_familiar_api;
+package br.com.alura.orcamento_familiar_api.infra.security;
 
+import br.com.alura.orcamento_familiar_api.infra.security.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,7 @@ public class SecurityConfiguration {
                 .sessionManagement(ssm -> ssm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(rqs ->{
                     rqs.requestMatchers("/login").permitAll();
+                    rqs.requestMatchers("/v3/api-docs/**","/swagger-ui.html","swagger-ui/**").permitAll();
                     rqs.anyRequest().authenticated();
                 }).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }

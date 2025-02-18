@@ -4,6 +4,7 @@ import br.com.alura.orcamento_familiar_api.dto.receita.DadosCadastroReceita;
 import br.com.alura.orcamento_familiar_api.dto.receita.DadosListagemReceita;
 import br.com.alura.orcamento_familiar_api.dto.receita.DadosReceitaAtualizada;
 import br.com.alura.orcamento_familiar_api.service.ReceitasService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/receitas")
+@SecurityRequirement(name = "bearer-key")
 public class ReceitasController {
     @Autowired
     private ReceitasService service;

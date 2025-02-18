@@ -1,4 +1,4 @@
-package br.com.alura.orcamento_familiar_api;
+package br.com.alura.orcamento_familiar_api.service;
 
 import br.com.alura.orcamento_familiar_api.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

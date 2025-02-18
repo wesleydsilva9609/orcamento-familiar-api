@@ -20,7 +20,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256("123456");
             return JWT.create()
-                    .withIssuer("orcamento api")
+                    .withIssuer("orcamento-familia-api")
                     .withSubject(usuario.getUsuario())
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
@@ -30,18 +30,18 @@ public class TokenService {
     }
 
     public String getSubject(String tokenJWT){
+
         try {
-            Algorithm algorithm = Algorithm.HMAC256("123456");
-            return JWT.require(algorithm)
-                    // specify any specific claim validations
-                    .withIssuer("orcamento api")
+            var algorithm = Algorithm.HMAC256("123456");
+            return  JWT.require(algorithm)
+                    .withIssuer("orcamento-familia-api")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
-
         } catch (JWTVerificationException exception){
-            throw new RuntimeException("token invalido");
+            throw new RuntimeException("tokenJWT invalido");
         }
+
     }
 
     private Instant dataExpiracao() {
