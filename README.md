@@ -4,7 +4,7 @@ Este projeto foi desenvolvido durante o curso da Alura, com o objetivo de criar 
 ## ✅ Tecnologias usadas
 * Java 17
 * Spring Boot
-* MySQL
+* Postgres
 * Spring Security
 * JWT (JSON Web Token)
 * Maven
@@ -14,7 +14,7 @@ Este projeto foi desenvolvido durante o curso da Alura, com o objetivo de criar 
 * CRUD de Receitas e Despesas
 
 Cadastro, listagem, atualização e remoção de receitas e despesas.
-* Integração com banco de dados MySQL.
+* Integração com banco de dados Postgres.
 * Validações básicas para não permitir registros duplicados no mesmo mês.
 ### 🔹 Segunda semana
 * Resumo e Buscas Personalizadas
