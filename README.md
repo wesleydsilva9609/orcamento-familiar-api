@@ -32,6 +32,7 @@ Geração de resumo mensal com:
 Cadastro e login de usuários.
 * Proteção das rotas da API para permitir acesso somente com token válido.
 * Implementação de segurança usando Spring Security.
+* deploy no render 
 
 ## 📌 Aprendizados
 Boas práticas com Spring Boot e arquitetura em camadas.
